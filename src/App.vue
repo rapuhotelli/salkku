@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <HeaderComponent/>
-    <router-view></router-view>
+    <div class="view-container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -30,5 +32,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-
+.view-container {
+  padding: $grid-gutter-width;
+}
 </style>
