@@ -54,7 +54,7 @@ exports.cssLoaders = function (options) {
       {
         loader: 'sass-resources-loader',
         options: {
-          resources: path.resolve(__dirname, '../src/sass-variables.scss')
+          resources: path.resolve(__dirname, '../src/sass/bs-variables.scss')
         }
       }
     ),

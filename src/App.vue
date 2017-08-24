@@ -12,7 +12,7 @@ export default {
   name: 'app',
   data() {
     return {
-      scurrentPage: 'Items',
+
     };
   },
   components: {
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/scss/bootstrap-reboot.scss';
 #app {
   margin-top: 0;
 

@@ -1,6 +1,6 @@
 <template>
   <div class="teams-grid">
-    {{ msg }}
+    
   </div>
 </template>
 
