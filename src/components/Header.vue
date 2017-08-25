@@ -14,8 +14,8 @@ export default {
   name: 'items',
   data() {
     return {
-      mouseover: (e) => {
-        console.log(e.target);
+      mouseover: () => {
+        // console.log(e.target);
       },
     };
   },

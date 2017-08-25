@@ -8,7 +8,7 @@ export default {
   props: ['item', 'task'],
   data() {
     return {
-      type: this.item.type,
+      type: `badge badge-${this.item.type}`,
       text: this.item.text,
     };
   },
