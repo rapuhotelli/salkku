@@ -26,17 +26,33 @@ function getCurrentTenDays() {
     10: moment(monday).add(11, 'd'),
   };
 }
-/*
-function getCalendarDates() {
-  const now = new Date();
-  const monday = moment(now).startOf('isoWeek');
-  const nextMonday = monday.add(1, 'week');
 
+/**
+ * Get offset for when to issue blocks start and end in the 2 week grid
+ * @param {string} datestring yyyy-mm-dd
+ */
+
+/* eslint-disable */
+function getColumnOffsetFromLastMonday(datestring) {
+  
+  const monday = getPreviousMonday();
+  return monday - moment(datestring);
+
+  /*
+  const offsetDate = moment(datestring);
+
+  const diff = offsetDate.diff(monday);
+
+  const duration = moment.duration(diff);
+  const hours = Math.round(duration.asDays());
+  // return diff;
+  return hours;
+  */
 }
-*/
 
 export default {
   getPreviousMonday,
   getCurrentTenDays,
   getCurrentWeekNumbers,
+  getColumnOffsetFromLastMonday,
 };
