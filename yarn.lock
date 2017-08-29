@@ -4132,6 +4132,10 @@ mocha@^3.2.0:
     mkdirp "0.5.1"
     supports-color "3.1.2"
 
+moment-business-days@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/moment-business-days/-/moment-business-days-1.0.6.tgz#9ed3e6e1270feee2c78f91f11bc750569d3bf924"
+
 moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"

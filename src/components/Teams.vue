@@ -12,14 +12,16 @@
 
     <div class="box week1-title">Week {{weeks[0]}}</div>
     <div class="box week2-title">Week {{weeks[1]}}</div>
+    <!--
     <div class="box column-title-actions">
       Actions
     </div>
+    -->
 
     <template v-for="(day, i) in days">
       <div class="day box">{{ getDateString(day) }}</div>
     </template>
-  
+
     <!-- Loop per team -->
     <template v-for="(team, tei) in teams">
 
@@ -27,12 +29,12 @@
         {{team.name}}
       </div>
 
-      <div class="box week1-column"  v-bind:style="{ 
+      <div class="box week1-column"  v-bind:style="{
           'grid-row':  (3+tei)+' / '+(4+tei),
           'grid-column': '2 / 7'
           }"></div>
 
-      <div class="box week2-column"  v-bind:style="{ 
+      <div class="box week2-column"  v-bind:style="{
           'grid-row': (3+tei)+' / '+(4+tei),
           'grid-column': '7 / 12'
         }"></div>
@@ -43,14 +45,14 @@
       </template>
   -->
       <!-- Loop per issue -->
-      
-      
       <template v-for="(issue, index) in team.issues">
-        <div class="issue-container" v-bind:style="{ 
+        <div class="issue-container" v-bind:style="{
           'grid-row': (3+tei)+' / '+(4+tei),
-          'grid-column': '2 / 7'
+          'grid-column': getIssueTimeRange(issue.start, issue.end)
+          //'grid-column': '7 / 12'
           }">
-          <div>{{issue.name}} {{getColumnOffsetFromLastMonday(issue.start)}}</div>
+          <div>Start: {{issue.start}} </div>
+          <div>End: {{issue.end}} </div>
           <Badge
             v-for="(task, tai) in issue.tasks"
             v-bind:item="task"
@@ -59,10 +61,8 @@
           ></Badge>
         </div>
       </template>
-      
-      
 
-      <div class="action-box box" v-bind:style="{'grid-row': (3+tei)} + ' / ' + (4+tei)">x</div>
+      <!--<div class="action-box box" v-bind:style="{'grid-row': (3+tei)} + ' / ' + (4+tei)">x</div>-->
     </template>
     <!-- End loop per team -->
   </div>
@@ -79,8 +79,8 @@ const teams = [
     issues: [
       {
         name: 'Yksille payment something-or-other',
-        start: '2017-08-28',
-        end: '2017-09-01',
+        start: '2017-08-31',
+        end: '2017-09-04',
         tasks: [
           { person: 'vermaru', type: 'primary', text: 'Im working on this thing' },
           { person: 'vermaru', type: 'primary', text: 'Also this' },
@@ -94,8 +94,8 @@ const teams = [
     issues: [
       {
         name: 'Why are we even employed god please help us',
-        start: '2017-08-23',
-        end: '2017-08-25 23:59:59',
+        start: '2017-08-29',
+        end: '2017-09-8',
         tasks: [
           { person: 'lahetju', type: 'primary', text: 'I hate everyone and everyone hates me' },
           { person: 'lahetju', type: 'primary', text: 'god fucking damn it' },
@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     getDateString: date => moment(date).format('ddd'),
-    getColumnOffsetFromLastMonday: utils.getColumnOffsetFromLastMonday,
+    getIssueTimeRange: utils.getIssueTimeRange,
   },
   components: {
     Badge,
@@ -142,6 +142,7 @@ export default {
   // 3 rows
   grid-template-rows: [title-row] auto [team1-row] auto [team2-row] auto [rows-end];
   */
+  grid-auto-columns: 9.090909%;
 }
 .column-title-teams {
   grid-row: 1/3;
@@ -161,6 +162,12 @@ export default {
   border-bottom: 1px solid $gray-300;
   padding: $grid-gutter-width/2;
 }
+
+.day.box {
+  //max-width: 9%;
+
+}
+
 .titles-grid {
   grid-column: 2/4;
   display: grid;
