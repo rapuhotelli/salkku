@@ -6,17 +6,10 @@
     <!--<div class="card-header box actions-title">Actions</div>-->
 
     <div class="box column-title-teams">Team</div>
-    <!--
-    <div class="box row-title-team1">team1</div>
-    <div class="box row-title-team2">team2</div>-->
+
 
     <div class="box week1-title">Week {{weeks[0]}}</div>
     <div class="box week2-title">Week {{weeks[1]}}</div>
-    <!--
-    <div class="box column-title-actions">
-      Actions
-    </div>
-    -->
 
     <template v-for="(day, i) in days">
       <div class="day box">{{ getDateString(day) }}</div>
@@ -51,8 +44,10 @@
           'grid-column': getIssueTimeRange(issue.start, issue.end)
           //'grid-column': '7 / 12'
           }">
+          <!--
           <div>Start: {{issue.start}} </div>
           <div>End: {{issue.end}} </div>
+          -->
           <Badge
             v-for="(task, tai) in issue.tasks"
             v-bind:item="task"
@@ -197,12 +192,18 @@ export default {
 }
 */
 .issue-container {
-  background-color: gray;
+  background-color: rgba(20, 50, 200, 0.3);
+  border: 1px solid $blue;
   opacity: 0.8;
+  margin: 15px;
+  border-radius: 5px;
+  padding: 5px;
   // grid-column: col 2 / span 2;
   // grid-row: row 2;
 }
-
+.badge {
+  margin-right: 5px;
+}
 </style>
 
 
